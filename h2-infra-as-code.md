@@ -14,4 +14,5 @@ A) Vagrant-installation
 I installed Vagrant on my host OS  
 To verify the installation, we proceed with a command:    
     **vagrant -v**
+![vagrant_v](https://github.com/user-attachments/assets/d78baf09-ebd9-4b18-b6db-c02f57a7a208)
     

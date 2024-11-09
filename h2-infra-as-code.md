@@ -20,8 +20,9 @@ B) Creating a new Linux VM using Vagrant
 
 Next we will create a new Linux VM using Vagrant
 For this, I first explored **https://developer.hashicorp.com/vagrant/docs/vagrantfile** for information about vagrantfile, as well as 
-**https://terokarvinen.com/2023/salt-vagrant/#infra-as-code---your-wishes-as-a-text-file**
+**https://terokarvinen.com/2023/salt-vagrant/#infra-as-code---your-wishes-as-a-text-file** for general information about Vagrant usage.
 
-It seems like we need a Vagrantfile for this. **Vagrant -h** kindly told me we can create a sample Vagrantfile with     **vagrant init**
+**Vagrant -h** kindly told me I can use **vagrant init**-command for creating a sample Vagrantfile. Let's do this.
+
 
     

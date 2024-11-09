@@ -12,4 +12,4 @@ OS: Latest Win 11
 A) Vagrant-installation
 I installed Vagrant on my host OS
 To verify the installation, we proceed with a command
-  **vagrant -v**
+ **vagrant -v**

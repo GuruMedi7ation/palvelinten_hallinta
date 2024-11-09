@@ -22,7 +22,7 @@ Next we will create a new Linux VM using Vagrant
 For this, I first explored **https://developer.hashicorp.com/vagrant/docs/vagrantfile** for information about vagrantfile, as well as 
 **https://terokarvinen.com/2023/salt-vagrant/#infra-as-code---your-wishes-as-a-text-file** for general information about Vagrant usage.
 
-**Vagrant -h** kindly told me I can use **vagrant init**-command for creating a sample Vagrantfile. Let's do this.
+Leveraging **Vagrant -h** I discovered I can use cmd **vagrant init** for creating a sample Vagrantfile. Let's do this.
 
 
     

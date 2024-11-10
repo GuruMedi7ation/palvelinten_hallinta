@@ -56,12 +56,13 @@ https://terokarvinen.com/2021/two-machine-virtual-network-with-debian-11-bullsey
 ![two_VMs_vagrantfile_tero](https://github.com/user-attachments/assets/53d12128-4dab-42d6-b89f-5b4b82db78a5)  
 
 Next, I looked at https://developer.hashicorp.com/vagrant/docs/vagrantfile/machine_settings to get more information  
-about the **Vagrant.configure("2")**-line and **config.vm.synced_folder**-line. The former is used for Vagrant's version
-control so that it's backward compatible. It's interesting to note that we can mix and match Vagrant configuration versions  
-in a same Vagrantfile if necessary. **config.vm.synced_folder** lets user set a shared folder between the host and the guest VMs.  
+about the **Vagrant.configure("2")**-line and **config.vm.synced_folder**-line.  
+The former is used for Vagrant's version control so that it's backward compatible. It's interesting to note that we can mix and match  
+Vagrant configuration versions in a single Vagrantfile if necessary.  
+**config.vm.synced_folder** lets user set a shared folder between the host and the guest VMs.  
 
 Let's try to create a vagrantfile of our own by shamelessly scavenging Tero's work! Thanks, Tero! Since Tero was using a script
-to install software for his Vagrant VM's, let's try to do the same by installing Salt minion and Salt master on our new VMs.  
+to install software for his Vagrant VM's, let's try to do the same by installing Salt minion and Salt master on our new VMs.    
 
 ```
 # -*- mode: ruby -*-
@@ -103,10 +104,10 @@ Vagrant.configure("2") do |config|
   end
 end
 ```   
-Oh boy, I'm excited to get to see if this works! It's pays to note that Salt configs for both VMs have not been touched yet.  
+Oh boy, I'm excited to get to see if this works! Notice that we haven't touched Salt's configuration files in our installation script.  
 Let's go create a folder for this attempt to keep things tidy..  After quick-fixing a minor case-sensitive issue with my script with ChatGPT..    
 
-...IT'S ON!!!  
+...IT'S UP!   
 
 ![provisioning](https://github.com/user-attachments/assets/f5f5e245-b9d8-44da-8c74-1e757bf945af)  
 
@@ -137,7 +138,45 @@ We will test our system by using cmd **sudo salt 'slave01' cmd.run 'whoami'**
 
 ![i_am_root](https://github.com/user-attachments/assets/33194b5d-f91d-4957-bd7f-ea76fabef281)
 
-I am Groot.
+I am (G)root.  
+
+## E) Hej, It's code as infra!
+
+Our next task is to create a .SLS-file that creates a file at /TMP-folder.  
+I don't think we'll need a Top.sls for this quite yet, so we'll proceed to **/srv/salt/** on our Salt master  
+and **touch touched.sls**. The contents of the file look as following:  
+´´´
+touched:
+  file.managed:
+    - name: '/tmp/cogitoergosum.txt'
+´´´
+
+Let's test our .sls file with cmd **sudo salt-call --local state.apply touched**
+
+![cogitoergosum](https://github.com/user-attachments/assets/c8e5b3a7-b195-4488-9d8b-653a493df924)
+
+It works beautifully! Salt gave us a warning about creating an empty file.  
+
+## F) Over the Internet and far away
+
+Next we will invoke our **touched.sls** over internet on our minion, slave01. 
+For this, we cmd **sudo salt 'slave01' state.apply touched**
+
+![touched_slave](https://github.com/user-attachments/assets/2dca3800-a840-4d8e-a89a-5c08a0252c97)  
+
+Since it's so easy to hop into our minion with cmd **vagrant ssh slave**, we'll do just that to verify the file really is there.  
+![IthinkIlive](https://github.com/user-attachments/assets/b18f2da0-0818-4ad1-8d5d-63de981256ec)  
+
+
+
+
+
+
+
+
+
+
+
 
 
 

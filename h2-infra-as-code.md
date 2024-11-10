@@ -104,7 +104,24 @@ Vagrant.configure("2") do |config|
 end
 ```   
 Oh boy, I'm excited to get to see if this works! It's pays to note that Salt configs for both VMs are not being touched yet.  
-Let's go create a folder for this attempt to keep things tidy..    
+Let's go create a folder for this attempt to keep things tidy..  After quick-fixing a minor case-sensitive issue with my script with ChatGPT..    
+
+...IT'S ON!!!  
+
+![provisioning](https://github.com/user-attachments/assets/f5f5e245-b9d8-44da-8c74-1e757bf945af)  
+
+Everything seems to be provisioned as per our vagrantfile  
+
+![vagrant_ping](https://github.com/user-attachments/assets/09399691-d6ee-4c35-a4a1-075a1e0c911a)  
+
+And network seems to be working as intended, both VMs have the IPs set correctly.  
+
+
+
+
+
+
+
    
 
    

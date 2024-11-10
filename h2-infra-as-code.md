@@ -110,11 +110,22 @@ Let's go create a folder for this attempt to keep things tidy..  After quick-fix
 
 ![provisioning](https://github.com/user-attachments/assets/f5f5e245-b9d8-44da-8c74-1e757bf945af)  
 
-Everything seems to be provisioned as per our vagrantfile  
+Everything seems to be provisioned as per our vagrantfile.  
 
 ![vagrant_ping](https://github.com/user-attachments/assets/09399691-d6ee-4c35-a4a1-075a1e0c911a)  
 
 And network seems to be working as intended, both VMs have the IPs set correctly.  
+
+## D) Master-minion architecture on the same network
+
+Now we'll demonstrate Master-Minion architecture on the two VMs we just created.
+Since we already installed Salt-Master and Salt-Minion on our VMs, this will be very easy and quick.
+
+First, we will **vagrant ssh slave** to go configure salt minion with **sudoedit /etc/salt/minion**  
+
+We'll configure minion to call back to our Salt-Master on 192.168.1.10.  
+
+
 
 
 

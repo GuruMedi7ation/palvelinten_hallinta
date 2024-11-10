@@ -63,7 +63,7 @@ in a same Vagrantfile if necessary. **config.vm.synced_folder** lets user set a 
 Let's try to create a vagrantfile of our own by shamelessly scavenging Tero's work! Thanks, Tero! Since Tero was using a script
 to install software for his Vagrant VM's, let's try to do the same by installing Salt minion and Salt master on our new VMs.  
 
-        # -*- mode: ruby -*-
+    # -*- mode: ruby -*-  
 # vi: set ft=ruby :
 
 $master_script = <<-MASTER_SCRIPT

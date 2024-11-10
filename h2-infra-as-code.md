@@ -148,7 +148,8 @@ and **touch touched.sls**. The contents of the file look as following:
 
 ```touched:
   file.managed:
-    - name: '/tmp/cogitoergosum.txt'```  
+    - name: '/tmp/cogitoergosum.txt'
+```  
 
 Let's test our .sls file with cmd **sudo salt-call --local state.apply touched**
 

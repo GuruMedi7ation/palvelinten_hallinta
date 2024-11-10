@@ -30,7 +30,7 @@ The end result looks as following. A bit messy, but instructive.
 Before we clean this up, let's try creating a single Linux VM. For this we need to find a VM provider using
 a ready made Vagrant Box. We can search for these at **https://portal.cloud.hashicorp.com/vagrant/discover?query=**
 
-It looks like many of these boxes are ancient, and I'm a little bit hesitant using 3rd party software, so we'll use Hashicorps's own
+It looks like many of these boxes are ancient, and I'm a little bit hesitant to use 3rd party software, so we'll use Hashicorps's own
 standard Ubuntu 18.04 LTS 64-bit box.  
 
 Let's edit Vagrantfile's **config.vm.box = "base"**-line to match **config.vm.box = "hashicorp/bionic64"**  

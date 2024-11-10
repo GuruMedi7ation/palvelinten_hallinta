@@ -145,11 +145,11 @@ I am (G)root.
 Our next task is to create a .SLS-file that creates a file at /TMP-folder.  
 I don't think we'll need a Top.sls for this quite yet, so we'll proceed to **/srv/salt/** on our Salt master  
 and **touch touched.sls**. The contents of the file look as following:  
-´´´
-touched:
+
+´´´touched:
   file.managed:
-    - name: '/tmp/cogitoergosum.txt'
-´´´
+    - name: '/tmp/cogitoergosum.txt'´´´
+
 
 Let's test our .sls file with cmd **sudo salt-call --local state.apply touched**
 

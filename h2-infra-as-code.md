@@ -121,9 +121,28 @@ And network seems to be working as intended, both VMs have the IPs set correctly
 Now we'll demonstrate Master-Minion architecture on the two VMs we just created.
 Since we already installed Salt-Master and Salt-Minion on our VMs, this will be very easy and quick.
 
-First, we will **vagrant ssh slave** to go configure salt minion with **sudoedit /etc/salt/minion**  
+First, we will cmd **vagrant ssh slave** to go configure salt minion with cmd **sudoedit /etc/salt/minion**  
 
-We'll configure minion to call back to our Salt-Master on 192.168.1.10.  
+We'll configure minion to call back to our Salt-Master on 192.168.1.10. We will also specify the correct port to use.  
+![minion_cfg](https://github.com/user-attachments/assets/8948f819-f3bf-4582-beda-08a0b2d2887d)
+  
+
+Then we will proceed to kick the daemon for the cfg changes to take effect with cmd **sudo systemctl restart salt-minion.service**  
+
+We log into our Salt-Master with cmd **vagrant ssh master** and then see if we have pending keys to acccept with cmd **sudo salt-key -L**  
+Everything is in order, so we proceed to accept all pending keys with cmd **sudo salt-key -A**  
+![slave01_key](https://github.com/user-attachments/assets/ac8e8e7d-bde6-4ee6-a372-1bdf8274300f)  
+
+We will test our system by using cmd **sudo salt 'slave01' cmd.run 'whoami'**
+
+![i_am_root](https://github.com/user-attachments/assets/33194b5d-f91d-4957-bd7f-ea76fabef281)
+
+I am Groot.
+
+
+
+
+ 
 
 
 

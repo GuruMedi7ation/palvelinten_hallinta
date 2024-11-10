@@ -100,7 +100,7 @@ to install software for his Vagrant VM's, let's try to do the same by installing
 		t001.vm.network "public_network", ip: "192.168.1.11"
 		t001.vm.hostname = "slave01"  
       end  
-   end  
+   	end  
 
    Oh boy, I'm excited to get to see if this works! It's pays to note that Salt configs for both VMs are not being touched yet.
 

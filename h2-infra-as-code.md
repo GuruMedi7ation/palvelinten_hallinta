@@ -76,7 +76,7 @@ to install software for his Vagrant VM's, let's try to do the same by installing
     sudo systemctl restart salt-master.service  
     MASTER_SCRIPT  
 
-    @minion_script = <<MINION_SCRIPT  
+    $minion_script = <<MINION_SCRIPT  
     set -o verbose    
     mkdir /etc/apt/keyrings    
     sudo curl -fsSL -o /etc/apt/keyrings/salt-archive-keyring-2023.gpg https://repo.saltproject.io/salt/py3/debian/12/amd64/SALT-PROJECT-GPG-PUBKEY-2023.gpg  
@@ -90,13 +90,13 @@ to install software for his Vagrant VM's, let's try to do the same by installing
     config.vm.box = "hashicorp/bionic64"  
 
     config.vm.define "master" do |master|
-		master.vm.provision :shell, inline: $MASTER_SCRIPT
+		master.vm.provision :shell, inline: $master_script
 		master.vm.network "public_network", ip: "192.168.1.10"
 		master.vm.hostname = "master"  
      end  
 
      config.vm.define "slave" do |slave|
-		slave.vm.provision :shell, inline: $MINION_SCRIPT
+		slave.vm.provision :shell, inline: $minion_script
 		slave.vm.network "public_network", ip: "192.168.1.11"
 		slave.vm.hostname = "slave01"  
       end  

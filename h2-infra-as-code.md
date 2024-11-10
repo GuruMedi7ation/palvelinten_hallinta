@@ -103,7 +103,7 @@ Vagrant.configure("2") do |config|
   end
 end
 ```   
-Oh boy, I'm excited to get to see if this works! It's pays to note that Salt configs for both VMs are not being touched yet.  
+Oh boy, I'm excited to get to see if this works! It's pays to note that Salt configs for both VMs have not been touched yet.  
 Let's go create a folder for this attempt to keep things tidy..  After quick-fixing a minor case-sensitive issue with my script with ChatGPT..    
 
 ...IT'S ON!!!  

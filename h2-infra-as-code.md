@@ -64,43 +64,43 @@ Let's try to create a vagrantfile of our own by shamelessly scavenging Tero's wo
 to install software for his Vagrant VM's, let's try to do the same by installing Salt minion and Salt master on our new VMs.  
 
     # -*- mode: ruby -*-  
-# vi: set ft=ruby :
-
-$master_script = <<-MASTER_SCRIPT
-set -o verbose
-mkdir /etc/apt/keyrings
-sudo curl -fsSL -o /etc/apt/keyrings/salt-archive-keyring-2023.gpg https://repo.saltproject.io/salt/py3/debian/12/amd64/SALT-PROJECT-GPG-PUBKEY-2023.gpg
-echo "deb [signed-by=/etc/apt/keyrings/salt-archive-keyring-2023.gpg arch=amd64] https://repo.saltproject.io/salt/py3/debian/12/amd64/latest bookworm main" | sudo tee /etc/apt/sources.list.d/salt.list
-sudo apt-get update
-sudo apt-get install -y salt-master
-sudo systemctl restart salt-master.service
-MASTER_SCRIPT
-
-$minion_script = <<-MINION_SCRIPT
-set -o verbose
-mkdir /etc/apt/keyrings
-sudo curl -fsSL -o /etc/apt/keyrings/salt-archive-keyring-2023.gpg https://repo.saltproject.io/salt/py3/debian/12/amd64/SALT-PROJECT-GPG-PUBKEY-2023.gpg
-echo "deb [signed-by=/etc/apt/keyrings/salt-archive-keyring-2023.gpg arch=amd64] https://repo.saltproject.io/salt/py3/debian/12/amd64/latest bookworm main" | sudo tee /etc/apt/sources.list.d/salt.list
-sudo apt-get update
-sudo apt-get install -y salt-minion
-sudo systemctl restart salt-minion.service
-MINION_SCRIPT
-
-Vagrant.configure("2") do |config|
-  config.vm.box = "hashicorp/bionic64"
-
-  config.vm.define "master" do |master|
-    master.vm.provision :shell, inline: $master_script
+    # vi: set ft=ruby :  
+    
+    $master_script = <<-MASTER_SCRIPT  
+    set -o verbose  
+    mkdir /etc/apt/keyrings  
+    sudo curl -fsSL -o /etc/apt/keyrings/salt-archive-keyring-2023.gpg https://repo.saltproject.io/salt/py3/debian/12/amd64/SALT-PROJECT-GPG-PUBKEY-2023.gpg  
+    echo "deb [signed-by=/etc/apt/keyrings/salt-archive-keyring-2023.gpg arch=amd64] https://repo.saltproject.io/salt/py3/debian/12/amd64/latest bookworm main" | sudo tee /etc/apt/sources.list.d/salt.list  
+    sudo apt-get update  
+    sudo apt-get install -y salt-master  
+    sudo systemctl restart salt-master.service  
+    MASTER_SCRIPT  
+    
+    $minion_script = <<-MINION_SCRIPT  
+    set -o verbose  
+    mkdir /etc/apt/keyrings  
+    sudo curl -fsSL -o /etc/apt/keyrings/salt-archive-keyring-2023.gpg https://repo.saltproject.io/salt/py3/debian/12/amd64/SALT-PROJECT-GPG-PUBKEY-2023.gpg  
+    echo "deb [signed-by=/etc/apt/keyrings/salt-archive-keyring-2023.gpg arch=amd64] https://repo.saltproject.io/salt/py3/debian/12/amd64/latest bookworm main" | sudo tee /etc/apt/sources.list.d/salt.list  
+    sudo apt-get update  
+    sudo apt-get install -y salt-minion  
+    sudo systemctl restart salt-minion.service  
+    MINION_SCRIPT  
+    
+    Vagrant.configure("2") do |config|  
+    config.vm.box = "hashicorp/bionic64"  
+    
+    config.vm.define "master" do |master|  
+    master.vm.provision :shell, inline: $master_script  
     master.vm.network "public_network", ip: "192.168.1.10"
-    master.vm.hostname = "master"
-  end
+    master.vm.hostname = "master"  
+  end  
 
-  config.vm.define "slave" do |slave|
-    slave.vm.provision :shell, inline: $minion_script
-    slave.vm.network "public_network", ip: "192.168.1.11"
-    slave.vm.hostname = "slave01"
-  end
-end
+  config.vm.define "slave" do |slave|  
+    slave.vm.provision :shell, inline: $minion_script  
+    slave.vm.network "public_network", ip: "192.168.1.11"  
+    slave.vm.hostname = "slave01"  
+  end  
+end  
 
    Oh boy, I'm excited to get to see if this works! It's pays to note that Salt configs for both VMs are not being touched yet.
    Let's go create a folder for this attempt to keep things tidy..  

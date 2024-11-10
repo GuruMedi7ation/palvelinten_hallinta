@@ -63,7 +63,8 @@ in a same Vagrantfile if necessary. **config.vm.synced_folder** lets user set a 
 Let's try to create a vagrantfile of our own by shamelessly scavenging Tero's work! Thanks, Tero! Since Tero was using a script
 to install software for his Vagrant VM's, let's try to do the same by installing Salt minion and Salt master on our new VMs.  
 
-'''# -*- mode: ruby -*-
+```
+# -*- mode: ruby -*-
 # vi: set ft=ruby :
 
 $master_script = <<-MASTER_SCRIPT
@@ -100,7 +101,7 @@ Vagrant.configure("2") do |config|
     slave.vm.network "public_network", ip: "192.168.1.11"
     slave.vm.hostname = "slave01"
   end
-end'''   
+end```   
 
    Oh boy, I'm excited to get to see if this works! It's pays to note that Salt configs for both VMs are not being touched yet.
    Let's go create a folder for this attempt to keep things tidy..  

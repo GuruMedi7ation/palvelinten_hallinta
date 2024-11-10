@@ -90,19 +90,21 @@ to install software for his Vagrant VM's, let's try to do the same by installing
     config.vm.box = "hashicorp/bionic64"  
 
     config.vm.define "master" do |master|
-		t001.vm.provision :shell, inline: $MASTER_SCRIPT
-		t001.vm.network "public_network", ip: "192.168.1.10"
-		t001.vm.hostname = "master"  
+		master.vm.provision :shell, inline: $MASTER_SCRIPT
+		master.vm.network "public_network", ip: "192.168.1.10"
+		master.vm.hostname = "master"  
      end  
 
      config.vm.define "slave" do |slave|
-		t001.vm.provision :shell, inline: $MINION_SCRIPT
-		t001.vm.network "public_network", ip: "192.168.1.11"
-		t001.vm.hostname = "slave01"  
+		slave.vm.provision :shell, inline: $MINION_SCRIPT
+		slave.vm.network "public_network", ip: "192.168.1.11"
+		slave.vm.hostname = "slave01"  
       end  
    	end  
 
    Oh boy, I'm excited to get to see if this works! It's pays to note that Salt configs for both VMs are not being touched yet.
+   Let's go create a folder for this attempt to keep things tidy..  
+   
 
    
 

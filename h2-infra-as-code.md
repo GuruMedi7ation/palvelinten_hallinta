@@ -101,10 +101,10 @@ Vagrant.configure("2") do |config|
     slave.vm.network "public_network", ip: "192.168.1.11"
     slave.vm.hostname = "slave01"
   end
-end```   
-
-   Oh boy, I'm excited to get to see if this works! It's pays to note that Salt configs for both VMs are not being touched yet.
-   Let's go create a folder for this attempt to keep things tidy..  
+end
+```   
+Oh boy, I'm excited to get to see if this works! It's pays to note that Salt configs for both VMs are not being touched yet.  
+Let's go create a folder for this attempt to keep things tidy..    
    
 
    

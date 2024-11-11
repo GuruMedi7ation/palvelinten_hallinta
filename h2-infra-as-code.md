@@ -167,6 +167,31 @@ For this, we cmd **sudo salt 'slave01' state.apply touched** on our master VM.
 Since it's so easy to hop into our minion with cmd **vagrant ssh slave**, we'll do just that to verify the file really is there.  
 ![IthinkIlive](https://github.com/user-attachments/assets/b18f2da0-0818-4ad1-8d5d-63de981256ec)  
 
+## G) Freestyle .SLS with two state-describing funtions
+
+Our next task is to create a .sls-file using two state describing functions. I'll try to create a sls-file that upgrades
+all system packages to latest versions, and I want also to create a text file that tells when the updates have been ran.
+
+For this, we will use **pkg.uptodate** to update our system packages, and **file.managed** to create the text file.
+
+At first, our code did not compile, but thankfully the error message was clear: **"State 'twostates' in SLS 'twostates' is not formed as a list"**  
+I used a YAML-validator to double check at **https://www.yamllint.com/** - but to my surprise, the code still did not compile! The same error message again  
+
+I made small adjustments, and I went from  
+![yaml_error_twostates](https://github.com/user-attachments/assets/fa85f1a5-b91a-4b67-b441-cef3d923bbd0)
+
+To this:
+'''
+twostates:
+  file.managed:
+    - name: /home/vagrant/lastupdated.txt
+    - contents: The system has been last updated X.X.X
+system_packages:
+  pkg.uptodate
+'''
+
+
+
 
 
 

@@ -159,8 +159,8 @@ It works beautifully! Salt gave us a warning about creating an empty file.
 
 ## F) Over the Internet and far away
 
-Next we will invoke our **touched.sls** over internet on our minion, slave01. 
-For this, we cmd **sudo salt 'slave01' state.apply touched**
+Next we will invoke our **touched.sls** over the internet on our minion, slave01. 
+For this, we cmd **sudo salt 'slave01' state.apply touched** on our master VM.
 
 ![touched_slave](https://github.com/user-attachments/assets/2dca3800-a840-4d8e-a89a-5c08a0252c97)  
 

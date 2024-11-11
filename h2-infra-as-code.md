@@ -181,14 +181,24 @@ I made small adjustments, and I went from
 ![yaml_error_twostates](https://github.com/user-attachments/assets/fa85f1a5-b91a-4b67-b441-cef3d923bbd0)
 
 To this:
-'''
+```
 twostates:
   file.managed:
     - name: /home/vagrant/lastupdated.txt
     - contents: The system has been last updated X.X.X
 system_packages:
   pkg.uptodate
-'''
+```
+The new format works and the .SLS compiles nicely.
+Here's the result. There's only 1 change that was made to the system, because I tested **file.managed** before running the full .SLS including
+the system package updates, and I thus created our **lastupdated.txt** already.
+
+![twostates](https://github.com/user-attachments/assets/3d3dc5d6-25cf-4ecf-9d76-2016f4fb17e4)
+
+Next we'll prove idempotency by invoking **twostates.sls** again 
+
+
+
 
 
 

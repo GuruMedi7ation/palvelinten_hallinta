@@ -25,7 +25,7 @@ For this, I first explored **https://developer.hashicorp.com/vagrant/docs/vagran
 Leveraging cmd **Vagrant -h** I discovered I can use cmd **vagrant init** for creating a sample Vagrantfile. Let's do this.
 
 The end result looks as following. A bit messy, but instructive.  
-![eka_vagrantfile](https://github.com/user-attachments/assets/7ad07024-eaa6-4f7b-95a3-300366a70ca6)
+![eka_vagrantfile](https://github.com/user-attachments/assets/cd1a237f-2c09-457e-94aa-78f1ca2e1202)  
 
 Before we clean this up, let's try creating a single Linux VM. For this we need to find a VM provider using
 a ready made Vagrant Box. We can search for these at **https://portal.cloud.hashicorp.com/vagrant/discover?query=**

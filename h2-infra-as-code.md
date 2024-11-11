@@ -189,13 +189,22 @@ twostates:
 system_packages:
   pkg.uptodate
 ```
-The new format works and the .SLS compiles nicely.
+The new format works and the .SLS compiles nicely. Now that we could use something more descriptive than **twostates:** on the first line  
+For example **creating_a_log:** would be better. Same for goes for **system_packages:**
+
 Here's the result. There's only 1 change that was made to the system, because I tested **file.managed** before running the full .SLS including
 the system package updates, and I thus created our **lastupdated.txt** already.
 
 ![twostates](https://github.com/user-attachments/assets/3d3dc5d6-25cf-4ecf-9d76-2016f4fb17e4)
 
-Next we'll prove idempotency by invoking **twostates.sls** again 
+Next we'll prove idempotency by invoking **twostates.sls** again  
+![two_states_idempotent](https://github.com/user-attachments/assets/273b1900-b8bc-4000-a2f4-2aae54348a72)  
+
+Now how quick the run time was compared to the previous run! The desired end state has been achieveed, so no changes  
+were done. Our .SLS file is thus idempotent!
+
+
+
 
 
 

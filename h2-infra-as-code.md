@@ -271,7 +271,12 @@ during our first run of our state was just an anomaly, likely because of the ord
 
 That was very cool! I look forwards to creating dynamic content in the future!  
 
-## X)) Last but not least - we'll summarize some text as concisely as we can.  
+## X)) Last but not least - we'll summarize some text as concisely as we can.
+
+- You can run scripts on Vagrant to have your VMs ready to go as soon as they are up.
+- You can control computes behind NAT, Firewalls and behind unknown addresses using Salt, which is very cool.
+- Remember to use Salt to achieve idempotency, and remember to keep your /srv/Salt/-directory in order ( Something I forgot! )
+  
 
 
  

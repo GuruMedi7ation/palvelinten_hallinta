@@ -211,9 +211,11 @@ The top file will be located at **/srv/salt/**. The top file is accompanied with
 which we created earlier. I also wanted to create a timestamp on the **lastupdated.txt**. I asked ChatGPT for some ideas how to implement this without using  
 Jinja, which could be used to create dynamic content for our Salt state files. In the end, we went with a following **cmd.run** implementation
 
-```timestamp:
+```
+timestamp:
   cmd.run:  
-    - name: echo "Timestamp: $(date '+%Y-%m-%d %H:%M:%S')" >> /home/vagrant/lastupdated.txt```
+    - name: echo "Timestamp: $(date '+%Y-%m-%d %H:%M:%S')" >> /home/vagrant/lastupdated.txt
+```
 
 However, it did not work. The culprit seemed to be what I interpret as a syntax error.
 ![syntax_error_1](https://github.com/user-attachments/assets/bbe150e8-e808-4048-bbec-58c53684f71c)
@@ -231,7 +233,8 @@ timestamp:
   cmd.run:
     - name: "echo \"Timestamp: $(date '+%Y-%m-%d %H:%M:%S')\" >> /home/vagrant/lastupdated.txt"
     - require:
-      - file: twostates```  
+      - file: twostates
+```  
 
 For my surprise this our state file compiled nicely!  
 
@@ -243,9 +246,11 @@ Let's go see how it looks in the target file @slave01!
 
 I'm so happy! ChatGPT also told us we could use a following method to ensure our more complex **cmd.run**-commands run properly.
 
-```timestamp:
+```
+timestamp:
   cmd.run:
-    - name: "bash -c 'echo \"Timestamp: $(date \"+%Y-%m-%d %H:%M:%S\")\" >> /home/vagrant/lastupdated.txt'"```
+    - name: "bash -c 'echo \"Timestamp: $(date \"+%Y-%m-%d %H:%M:%S\")\" >> /home/vagrant/lastupdated.txt'"
+```
 
 According to ChatGPT, this method allows us to:  
 "bash -c: This tells Salt to execute the command in bash, which supports the $(...) syntax.

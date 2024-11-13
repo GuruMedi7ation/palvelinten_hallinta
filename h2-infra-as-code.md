@@ -222,7 +222,7 @@ timestamp:
 However, it did not work. The culprit seemed to be what I interpret as a syntax error.
 ![syntax_error_1](https://github.com/user-attachments/assets/bbe150e8-e808-4048-bbec-58c53684f71c)
 
-I asked ChatGPT again for some guidance, and we gave our timestamp another attempt at life. Here's our full code for our **twostates.sls**
+I asked ChatGPT again for some guidance, so we gave our timestamp another attempt at life. Here's our full code for our **twostates.sls**
 
 ```
 twostates:
@@ -266,6 +266,14 @@ It works! It's interesting to note the end result:
 ![bash_works_too](https://github.com/user-attachments/assets/31fa07a6-7324-4b1c-9a84-48e2d82c62bf)
 
 It seems like the **bash -c**-method ends up with salt interpreting this as two changes have been made, which is indeed correct!
+I tested out our old timestamp and it now produced **two changes were made**-effect. It's likely that the **one change was made**-case  
+during our first run of our state was just an anomaly, likely because of the order of the commands that we executed on our state file.  
+
+That was very cool! I look forwards to creating dynamic content in the future!  
+
+## X)) Last but not least - we'll summarize some text as concisely as we can.  
+
+
  
 
 

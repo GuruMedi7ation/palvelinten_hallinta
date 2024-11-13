@@ -200,8 +200,84 @@ the system package updates, and I thus created our **lastupdated.txt** already.
 Next we'll prove idempotency by invoking **twostates.sls** again  
 ![two_states_idempotent](https://github.com/user-attachments/assets/273b1900-b8bc-4000-a2f4-2aae54348a72)  
 
-Now how quick the run time was compared to the previous run! The desired end state has been achieveed, so no changes  
+Notice how quick the run time was compared to the previous run! The desired end state has been achieveed, so no changes  
 were done. Our .SLS file is thus idempotent!
+
+## H) The Top File / Two modules at the same time  
+
+I'm a lucky boy! We implemented a top file last week, so now that we're actually tasked with building a top file this week, we're ahead a little!
+
+The top file will be located at **/srv/salt/**. The top file is accompanied with two state files/modules, **twostates.sls** and **touched.sls**,
+which we created earlier. I also wanted to create a timestamp on the **lastupdated.txt**. I asked ChatGPT for some ideas how to implement this without using  
+Jinja, which could be used to create dynamic content for our Salt state files. In the end, we went with a following **cmd.run** implementation
+
+```timestamp:
+  cmd.run:  
+    - name: echo "Timestamp: $(date '+%Y-%m-%d %H:%M:%S')" >> /home/vagrant/lastupdated.txt```
+
+However, it did not work. The culprit seemed to be what I interpret as a syntax error.
+![syntax_error_1](https://github.com/user-attachments/assets/bbe150e8-e808-4048-bbec-58c53684f71c)
+
+I asked ChatGPT again for some guidance, and we gave our timestamp another attempt at life. Here's our full code for our **twostates.sls**
+
+```
+twostates:
+  file.managed:
+    - name: /home/vagrant/lastupdated.txt
+    - contents: The system has been last updated X.X.X
+system_packages:
+  pkg.uptodate
+timestamp:
+  cmd.run:
+    - name: "echo \"Timestamp: $(date '+%Y-%m-%d %H:%M:%S')\" >> /home/vagrant/lastupdated.txt"
+    - require:
+      - file: twostates```  
+
+For my surprise this our state file compiled nicely!  
+
+![Great_success](https://github.com/user-attachments/assets/4d21e18d-ca55-4134-90ea-77978ddfaa92)  
+
+Let's go see how it looks in the target file @slave01! 
+
+![great_success_2](https://github.com/user-attachments/assets/488ba357-40f5-48ec-973a-1d4e74406d94)  
+
+I'm so happy! ChatGPT also told us we could use a following method to ensure our more complex **cmd.run**-commands run properly.
+
+```timestamp:
+  cmd.run:
+    - name: "bash -c 'echo \"Timestamp: $(date \"+%Y-%m-%d %H:%M:%S\")\" >> /home/vagrant/lastupdated.txt'"```
+
+According to ChatGPT, this method allows us to:  
+"bash -c: This tells Salt to execute the command in bash, which supports the $(...) syntax.
+Escaped Quotes: The inner double quotes are escaped with \ to ensure YAML interprets them correctly and allows for proper string expansion within bash."
+
+Let's go and test that method!
+
+It works! It's interesting to note the end result:
+
+![bash_works_too](https://github.com/user-attachments/assets/31fa07a6-7324-4b1c-9a84-48e2d82c62bf)
+
+It seems like the **bash -c**-method ends up with salt interpreting this as two changes have been made, which is indeed correct!
+ 
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

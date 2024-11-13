@@ -9,6 +9,8 @@ GPU: RX6600@stock clocks
 SSD: WD Black 1TB + 0.5TB legacy SSD + 1TB legact HDD  
 OS: Latest Win 11  
 
+We also implemented some changes to improve the readability of our code with three .md backticks 
+
 ## A) Vagrant-installation  
 
 I installed Vagrant on my host OS  

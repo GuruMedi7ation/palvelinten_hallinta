@@ -208,8 +208,8 @@ were done. Our .SLS file is thus idempotent!
 I'm a lucky boy! We implemented a top file last week, so now that we're actually tasked with building a top file this week, we're ahead a little!
 
 The top file will be located at **/srv/salt/**. The top file is accompanied with two state files/modules, **twostates.sls** and **touched.sls**,
-which we created earlier. I also wanted to create a timestamp on the **lastupdated.txt**. I asked ChatGPT for some ideas how to implement this without using  
-Jinja, which could be used to create dynamic content for our Salt state files. In the end, we went with a following **cmd.run** implementation
+which we created earlier. I also wanted to create a timestamp on the **lastupdated.txt**. I asked ChatGPT for some ideas how to implement this without using     
+Jinja, which could be used to create dynamic content for our Salt state files. In the end, we went with a following **cmd.run** implementation  
 
 ```
 timestamp:

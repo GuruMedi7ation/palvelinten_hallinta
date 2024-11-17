@@ -20,11 +20,11 @@ and configure it. We got lucky, and there is a default site configured for us. L
 Oh boy, there is an example **index.html** in there. Let's replace it! I'll leverage ChatGPT to save some time and I'll ask it to create us a 
 simple index.html to test our site. We proceed to drop our new **index.html** at **/var/www/html/**
 
-Let's kick the daemon with **sudo systemctl restart apache2**
+Let's kick the daemon with cmd **sudo systemctl restart apache2**
 
 Next, we get our own IP with cmd **hostname -i** to have an address to visit with Lynx
 
-And since we don't have Lynx installed, we'll do so with **apt-get install lynx**
+And since we don't have Lynx installed, we'll do so with cmd **apt-get install lynx**
 
 Let's view our website by visiting with it Lynx! We cmd **lynx 127.0.2.1/index.html** and cross our fingers...
 ![top_secret_fail](https://github.com/user-attachments/assets/538b2e3f-0b87-417f-85f0-dfc8b9f98e7d)  
@@ -45,6 +45,7 @@ Let's proceed to create a state file for our minion.
 We'll create a new folder on our Salt master at **/srv/salt/apache2** where we'll create our state file
 
 We created our state file, however we got the following error message when invoking our desired state for our minion.
+
 ![salt_apache_html_fail](https://github.com/user-attachments/assets/d4010890-4ebd-4d8e-94e1-07b483018ebb)  
 
 Just like the error message says, **"Source file salt://var/www/html/index.html not found"** at the specified location. It looks like Salt

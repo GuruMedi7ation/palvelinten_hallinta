@@ -170,7 +170,7 @@ let's try it with cmd **sudo chmod 640 /srv/salt/ssh/init.sls**
 
 ![its_broken](https://github.com/user-attachments/assets/90811700-9285-4d9b-9bba-2bee634f79d1)
 
-It worked!!!
+It worked!
 
 Pretty interesting!
 
@@ -200,6 +200,9 @@ kick_the_firewall:
     - watch:
       - file: /etc/ufw/user.rules
 ```
+
+![fully_idempotent1](https://github.com/user-attachments/assets/4d6c1853-1422-4a17-8c6a-5217f7f334dc)
+![fully_idempotent2](https://github.com/user-attachments/assets/bec47e2f-efc2-401a-b21b-32a8ee779e75)
 
 That's all, folks!
 

@@ -30,8 +30,9 @@ Let's view our website by visiting with it Lynx! We cmd **lynx 127.0.2.1/index.h
 ![top_secret_fail](https://github.com/user-attachments/assets/538b2e3f-0b87-417f-85f0-dfc8b9f98e7d)  
 
 And our top secret test site is up! W00t! I asked ChatGPT to write "This is Lauri's top secret test site" stylized as Ascii-art.
-It seems all that we got was "Ticotchid."... I asked ChatGPT what Ticotchid means, and apparently it stands for: "The Incredible Code Of Top-Secret Hidden Information Depot."
+It seems all that we got was "Ticotchid."... 
 
+I asked ChatGPT what Ticotchid means, and apparently it stands for: "The Incredible Code Of Top-Secret Hidden Information Depot."
 I'll take that.
 
 Everything works fine when we try to enter our website from our local host, but when we use slave01 to enter our website, we cannot connect to host.

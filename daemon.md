@@ -1,4 +1,4 @@
-![SSH_ports](https://github.com/user-attachments/assets/6b0679a2-f54d-4e66-9dc4-2653aa560a24)## Daemon
+## Daemon
 
 ## A) Apache Easy Mode
 

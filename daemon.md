@@ -22,11 +22,11 @@ One cmd **sudo apt-get install apache2** after we have our apache2 installed.
 ![apache2_manual_installation](https://github.com/user-attachments/assets/e2874e5f-fa2b-488b-8cf5-e4ca0f07f481)
 
 Next, we will proceed to **/etc/apache2/** to have a look around. We should first create an example website on /etc/apache2/sites-available/
-and configure it. We got lucky, and there is a default site configured for us. Let's cmd **cat 000-default-conf** and look around some more.
+and configure it. We got lucky, and there is a default configuration for us! Let's cmd **cat 000-default-conf** and look around some more.
 
 ![default_conf](https://github.com/user-attachments/assets/a002d6a4-254d-490f-a6c7-4ddb5dcc3c7d)  
 
-**/var/www/html/** is the folder where the assets of our default page are stored. Next, we will head there and cmd **ls -la**
+Looks like **/var/www/html/** is the folder where the assets of our default page are stored. Next, we will head there and cmd **ls -la**
 
 Oh boy, there is an example **index.html** in there. Let's replace it! I'll leverage ChatGPT to save some time and I'll ask it to create us a 
 simple index.html to test our site. We proceed to drop our new **index.html** at **/var/www/html/**

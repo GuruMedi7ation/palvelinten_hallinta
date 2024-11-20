@@ -335,6 +335,33 @@ All this without leveraging sudo!
 
 It's there! Notice we're accessing /~vagrant/ on Apache2 running on slave01
 
+Our final state file is as follows:
+
+```
+enable_userdir:
+  cmd.run:
+    - name: a2enmod userdir
+kick_the_daemon:
+  service.running:
+    - name: apache2
+    - enable: True
+    - reload: True
+    - watch:
+      - cmd: enable_userdir
+/etc/apache2/mods-enabled/userdir.conf:
+  file.managed:
+    - source: salt://public_html/userdir.conf
+/home/vagrant/public_html/index.html:
+  file.managed:
+    - source: salt://public_html/index.html
+    - makedirs: True
+    - user: vagrant
+    - group: vagrant
+    - mode: 644
+```
+![right_permission_2](https://github.com/user-attachments/assets/79233280-8f96-4f56-8ad9-ea926176bb1b)
+
+
 I'm excited to see you again next week, let's have fun!
 
 

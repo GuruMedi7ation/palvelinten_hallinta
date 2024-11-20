@@ -61,7 +61,7 @@ We created our state file, however we got the following error message when invok
 ![salt_apache_html_fail](https://github.com/user-attachments/assets/d4010890-4ebd-4d8e-94e1-07b483018ebb)  
 
 Just like the error message says, **"Source file salt://var/www/html/index.html not found"** at the specified location. It looks like Salt
-is looking for **/var/www/html/index.html** from our **/srv/salt**-folder. I have a feeling this could be configured from **/etc/salt/master**, but
+is looking for **/var/www/html/index.html** under our **/srv/salt**-folder. I have a feeling this could be configured from **/etc/salt/master**, but
 it might be better practice just to copy our **index.html** on the same directory where our **apache2-module** exists. Let's do that and try again!
 
 Our Apache2-module now looks like this:

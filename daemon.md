@@ -2,14 +2,14 @@
 
 Welcome back, Traveller.
 
-As before, the tests were run with the same hardware:
-CPU: R7 5700X@stock clocks
-RAM: Kingston DDR4-3200 32GB CL16
-GPU: RX6600@stock clocks
-SSD: WD Black 1TB + 0.5TB legacy SSD + 1TB legact HDD
-OS: Latest Win 11
+As before, the tests were run with the same hardware:  
+CPU: R7 5700X@stock clocks  
+RAM: Kingston DDR4-3200 32GB CL16  
+GPU: RX6600@stock clocks  
+SSD: WD Black 1TB + 0.5TB legacy SSD + 1TB legact HDD  
+OS: Latest Win 11  
 
-VMs: Virtualbox via Vagrant ( It's amazing how little RAM these consume! )
+VMs: Virtualbox via Vagrant ( It's amazing how little RAM these consume! )  
 
 ## A) Apache Easy Mode
 

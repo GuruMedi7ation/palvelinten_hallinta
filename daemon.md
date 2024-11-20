@@ -364,6 +364,32 @@ kick_the_daemon:
 
 I'm excited to see you again next week, let's have fun!
 
+## X) Heh, I forgot all about this one
+
+**updated 10 mins later**
+
+We use the following states to make magic happen: 1) pkg. to install files with idempotency by invoking **pkg.installed:**
+2) file. to drop in idempotent cfg files with **file.managed:** and 3) **service.running** to **kick the daemon** often with **watch** defined
+
+- pkg.latest can be used to ensure the latest version of a package is installed as soon as an update is available
+- pkg.installed is, however, recommended. You can also define and specify what version of a package should be installed
+- pkg.uptodate can be used to upgrade system packages
+- pkg.purge can be used to completely remove a package
+
+- you can use **makedirs**-parameter with **file.managed** to create subdirectories for a while you want to manage if they don't exist already
+- you can also use a template to create dynamic content with **mod:**-parameter
+- you can change the owner and group of a file you create with **user:**-parameter
+- file.symlink creates a symbolic link
+- **file.absent** makes sure that a file or a directory **does not exist**. If it exists, it will be deleted.
+
+- service.running ensures that a daemon is running. You can use watch to kick the daemon when a change in the thing being watched is detected.
+- service.enabled ensures that a daemon is started on boot
+- service.dead ensures the daemon is killed
+-  
+
+
+
+
 
 
 

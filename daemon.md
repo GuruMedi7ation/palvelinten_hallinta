@@ -107,7 +107,8 @@ to display a following banner: "Unauthorized access will be prosecuted." The pat
 We created the banner file on our Salt Master directory **/srv/salt/ssh/**
 
 Next, we want to update our firewall configurations on our Salt minions. We'll update our firewall configurations using **cmd.run ufw allow 22 AND ufw allow 1234**
-and we'll kick the daemon with **service.start**. **watch** is used to make Salt
+and we'll kick the daemon with **service.start**. **watch** is used to make Salt watch for changes made in file sshd_config and sshd_banner and kick the daemon if
+there were changes made in the file(s)
 
 Let's create a state file!
 

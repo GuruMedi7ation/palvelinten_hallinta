@@ -22,7 +22,10 @@ Apache to display the users' web pages, too )
 
 Salt is going to be installed via a script embedded in our vagrantfile to make things go a bit smoother,  
 like I did on our second homework: h2-infra-as-code. However, this time we will use a locally saved copy  
-of Salt to install on our newly provisioned VMs.
+of Salt to install on our newly provisioned VMs, so our vagrantfile and its script will serve us well in the  
+future, too.  
 
-It will be fun!
+
+
+
 

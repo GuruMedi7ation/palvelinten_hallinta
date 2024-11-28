@@ -57,6 +57,11 @@ It describes the depencies of Salt, which will help us troubleshoot our problem.
 
 ![dependencies](https://github.com/user-attachments/assets/845f0847-bc09-4055-bb3d-6af447d0f95e)
 
+For now, we need at least **salt-common** version 3007.1. Let's download it and throw it to our shared folder  
+and modify our script accordingly!
+
+
+
 
 
 

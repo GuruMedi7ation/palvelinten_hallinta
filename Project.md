@@ -68,8 +68,56 @@ salt-minion and salt-common in the following way. Apt has stored copies of the d
 
 ![uh_oh](https://github.com/user-attachments/assets/ebe13ac3-2ae7-4b49-ba6b-1724b902a15b)  
 
-With that, I'll head to bed and figure out if I can grep and script this into something workable for our Vagrantfile,
-or if I should just install over the web so I can move on with the task.
+With that, I'll head to bed and figure out if I can use grep to script this into something workable for our Vagrantfile,  
+or if I should just install over the web so I can move on with the task.  
+
+It's a new, beautiful day and we're back with a hot trick! It's called **apt-offline**, a package management tool that   
+allows us to build a signature of a software and its dependencies on our offline machine and bundle them to be installed
+  
+For this, we first build a list of dependencies we want to install on our offline machine with cmd  
+
+**sudo apt-offline set /vagrant/salt-minion.sig --install-packages salt-minion**    
+
+![apt-offline-minion-set](https://github.com/user-attachments/assets/f56d13e3-1dcd-4c66-8d51-b28000ca42e2)  
+
+Next, we proceed to download and bundle the dependencies on our on-line machine with cmd  
+
+**sudo apt-offline set salt-minion.sig -d /vagrant --threads 5 --bundle salt-minion.zip**  
+
+![apt-offline-minion-bundle](https://github.com/user-attachments/assets/358e01b9-2baf-4f86-9e1b-4281a2fa9e19)  
+
+So far, so good. Next, we'll try to provision our VMs with our Vagrantfile  
+
+![fail_master](https://github.com/user-attachments/assets/17c78dbc-e4ae-430f-930c-7d1375c9c65b)  
+
+However, it's a fail! Notice that we're trying to provision **salt-master** here. Since apt-offline was asking for a prompt,  
+I tried to modify our script by echoing Y - but alas, it did not work.  
+
+**apt-offline**, according to it's man-page, usually used to install packages on an offline machine via removable media (think USB etc)  
+We simulated this by installing our bundled package from VM's shared folder that we have defined. So, the next step was to invoke cmd  
+**sudo apt-offline install /vagrant/salt-master.zip --verbose** The result was the following:  
+
+![sofarsogood](https://github.com/user-attachments/assets/9254578a-84cd-4a68-9bfc-3479f97870e1)  
+
+Next, I tried kicking the daemon, but for my surprise I found out that we do not have salt-master installed on our machine.  
+It seems like that apt-offline installed all our dependencies, but not the master daemon itself.  
+
+We tried to rectify this with cmd **sudo dpkg -i /vagrant/salt-master_3007.1_amd64.deb** which resulted in a following insult:  
+
+![salt_common_fail](https://github.com/user-attachments/assets/a5f6a510-2cf2-4d7f-a4ce-596e87bf5306)  
+
+Now we're missing **salt-common** dependency! It was an interesting experiment with apt-offline, but our time is starting to run short,  
+so it would be wise to move forwards and just install our software online.  
+
+
+
+
+
+
+
+
+
+
 
 
 
